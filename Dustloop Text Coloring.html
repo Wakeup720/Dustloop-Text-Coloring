@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<style>
+.boxed label {
+  display: inline-block;
+  width: 200px;
+  padding: 10px;
+  border: solid 2px black;
+  transition: all 0.3s;
+  background-color: gray;
+  color:white;
+  text-align:center;
+}
+
+.boxed input[type="radio"] {
+  display: none;
+}
+
+.boxed input[type="radio"]:checked + label {
+  background-color: #555555;
+}
+
+p {
+  color:white;
+}
+</style>
+<body style="background-color:#333333">
+
+<script>
+
+function ColorTextA(){
+	const str = document.getElementById("textFromUser").value;
+	const regex = [
+	/(?<![\]\#\"\%\=\{{clr|1|\{{clr|A|])(\bd\.A+\b|\bd\.[0-9]+A+\b|\bj\.A+\b|\bc\.A+\b|\bf\.A+\b|\bj\.[0-9]+A+\b(?!})|\bfl\.[0-9]+A+\b(?!})|\[[0-9]+\][0-9]+A\b(?!})|\b[0-9]+\[A\](?!})|[0-9]+A+\b(?!})|A+\b(?=\+)|\b(?<=[\`\~\/])A\b(?!\")|\b(?<=[\+\'\~])\bA+\b(?!\"))(?!\.[A-z]+)(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|2|\{{clr|B|])(\bd\.B+\b|\bd\.[0-9]+B+\b|\bj\.B+\b|\bc\.B+\b|\bf\.B+\b|\bj\.[0-9]+B+\b(?!})|\bfl\.[0-9]+B+\b(?!})|\[[0-9]+\][0-9]+B\b(?!})|\b[0-9]+B+\b(?!})|\b[0-9]+\[B\](?!})|\b(?<=[\+\'\~\/])\bB+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|3|\{{clr|C|])(\bd\.C+\b|\bd\.[0-9]+C+\b|\bj\.C+\b|\bc\.C+\b|\bf\.C+\b|\bj\.[0-9]+C+\b(?!})|\bfl\.[0-9]+C+\b(?!})|\[[0-9]+\][0-9]+C\b(?!})|\b[0-9]+C+\b(?!})|\b[0-9]+\[C\](?!})|\b(?<=[\+\'\~\/])\bC+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|4|\{{clr|D|])(\bd\.D+\b|\bd\.[0-9]+D+\b|\bj\.D+\b|\bc\.D+\b|\bf\.D+\b|\bj\.[0-9]+D+\b(?!})|\bfl\.[0-9]+D+\b(?!})|\[[0-9]+\][0-9]+D\b(?!})|\b[0-9]+D+\b(?!})|\b[0-9]+\[D\](?!})|\b(?<=[\+\'\~\/])\bD+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|5|\{{clr|E|])(\bd\.E+\b|\bd\.[0-9]+E+\b|\bj\.E+\b|\bc\.E+\b|\bf\.E+\b|\bj\.[0-9]+E+\b(?!})|\bfl\.[0-9]+E+\b(?!})|\[[0-9]+\][0-9]+E\b(?!})|\b[0-9]+E+\b(?!})|\b[0-9]+\[E\](?!})|\b(?<=[\+\'\~\/])\bE+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|5|\{{clr|P|])(\bd\.P+\b|\bd\.[0-9]+P+\b|\bj\.P+\b|\bc\.P+\b|\bf\.P+\b|\bj\.[0-9]+P+\b(?!})|\bfl\.[0-9]+P+\b(?!})|\[[0-9]+\][0-9]+P\b(?!})|\b[0-9]+P+\b(?!})|\b[0-9]+\[P\](?!})|\b(?<=[\+\'\~\/])\bP+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	];
+	const subst = [ `{{clr|A|$1}}` , `{{clr|B|$1}}` , `{{clr|C|$1}}` , `{{clr|D|$1}}` , `{{clr|E|$1}}` , `{{clr|P|$1}}` ];
+
+	var result=str;
+	for (i = 0; i < regex.length; i++) { result = result.replace(regex[i], subst[i]);}
+	navigator.clipboard.writeText(result);
+	document.getElementById("textFromUser").value = "";
+}
+
+function ColorTextP(){
+	const str = document.getElementById("textFromUser").value;
+	const regex = [
+	/(?<![\]\#\"\%\=\{{clr|1|\{{clr|P|])(\bd\.P+\b|\bd\.[0-9]+P+\b|\bj\.P+\b|\bc\.P+\b|\bf\.P+\b|\bj\.[0-9]+P+\b(?!})|\bfl\.[0-9]+P+\b(?!})|\[[0-9]+\][0-9]+P\b(?!})|\b[0-9]+\[P\](?!})|[0-9]+P+\b(?!})|P+\b(?=\+)|\b(?<=[\`\~\/])P\b(?!\")|\b(?<=[\+\'\~])\bP+\b(?!\"))(?!\.[A-z]+)(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|2|\{{clr|K|])(\bd\.K+\b|\bd\.[0-9]+K+\b|\bj\.K+\b|\bc\.K+\b|\bf\.K+\b|\bj\.[0-9]+K+\b(?!})|\bfl\.[0-9]+K+\b(?!})|\[[0-9]+\][0-9]+K\b(?!})|\b[0-9]+K+\b(?!})|\b[0-9]+\[K\](?!})|\b(?<=[\+\'\~\/])\bK+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|3|\{{clr|S|])(\bd\.S+\b|\bd\.[0-9]+S+\b|\bj\.S+\b|\bc\.S+\b|\bf\.S+\b|\bj\.[0-9]+S+\b(?!})|\bfl\.[0-9]+S+\b(?!})|\[[0-9]+\][0-9]+S\b(?!})|\b[0-9]+S+\b(?!})|\b[0-9]+\[S\](?!})|\b(?<=[\+\'\~\/])\bS+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|4|\{{clr|H|])(\bd\.H+\b|\bd\.[0-9]+H+\b|\bj\.H+\b|\bc\.H+\b|\bf\.H+\b|\bj\.[0-9]+H+\b(?!})|\bfl\.[0-9]+H+\b(?!})|\[[0-9]+\][0-9]+H\b(?!})|\b[0-9]+H+\b(?!})|\b[0-9]+\[H\](?!})|\b(?<=[\+\'\~\/])\bH+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|5|\{{clr|D|])(\bd\.D+\b|\bd\.[0-9]+D+\b|\bj\.D+\b|\bc\.D+\b|\bf\.D+\b|\bj\.[0-9]+D+\b(?!})|\bfl\.[0-9]+D+\b(?!})|\[[0-9]+\][0-9]+D\b(?!})|\b[0-9]+D+\b(?!})|\b[0-9]+\[D\](?!})|\b(?<=[\+\'\~\/])\bD+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	];
+	const subst = [ `{{clr|P|$1}}` , `{{clr|K|$1}}` , `{{clr|S|$1}}` , `{{clr|H|$1}}` , `{{clr|D|$1}}` ];
+
+	var result=str;
+	for (i = 0; i < regex.length; i++) { result = result.replace(regex[i], subst[i]); }
+	navigator.clipboard.writeText(result);
+	document.getElementById("textFromUser").value = "";
+}
+
+function ColorTextL(){
+	const str = document.getElementById("textFromUser").value;
+	const regex = [
+	/(?<![\]\#\"\%\=\{{clr|1|\{{clr|L|])(\bd\.L+\b|\bd\.[0-9]+L+\b|\bj\.L+\b|\bc\.L+\b|\bf\.L+\b|\bj\.[0-9]+L+\b(?!})|\bfl\.[0-9]+L+\b(?!})|\[[0-9]+\][0-9]+L\b(?!})|\b[0-9]+\[L\](?!})|[0-9]+L+\b(?!})|L+\b(?=\+)|\b(?<=[\`\~\/])L\b(?!\")|\b(?<=[\+\'\~])\bL+\b(?!\"))(?!\.[A-z]+)(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|2|\{{clr|M|])(\bd\.M+\b|\bd\.[0-9]+M+\b|\bj\.M+\b|\bc\.M+\b|\bf\.M+\b|\bj\.[0-9]+M+\b(?!})|\bfl\.[0-9]+M+\b(?!})|\[[0-9]+\][0-9]+M\b(?!})|\b[0-9]+M+\b(?!})|\b[0-9]+\[M\](?!})|\b(?<=[\+\'\~\/])\bM+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|3|\{{clr|H|])(\bd\.H+\b|\bd\.[0-9]+H+\b|\bj\.H+\b|\bc\.H+\b|\bf\.H+\b|\bj\.[0-9]+H+\b(?!})|\bfl\.[0-9]+H+\b(?!})|\[[0-9]+\][0-9]+H\b(?!})|\b[0-9]+H+\b(?!})|\b[0-9]+\[H\](?!})|\b(?<=[\+\'\~\/])\bH+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|4|\{{clr|S|])(\bd\.S+\b|\bd\.[0-9]+S+\b|\bj\.S+\b|\bc\.S+\b|\bf\.S+\b|\bj\.[0-9]+S+\b(?!})|\bfl\.[0-9]+S+\b(?!})|\[[0-9]+\][0-9]+S\b(?!})|\b[0-9]+S+\b(?!})|\b[0-9]+\[S\](?!})|\b(?<=[\+\'\~\/])\bS+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	, /(?<![\]\#\"\%\=\{{clr|5|\{{clr|U|])(\bd\.U+\b|\bd\.[0-9]+U+\b|\bj\.U+\b|\bc\.U+\b|\bf\.U+\b|\bj\.[0-9]+U+\b(?!})|\bfl\.[0-9]+U+\b(?!})|\[[0-9]+\][0-9]+U\b(?!})|\b[0-9]+U+\b(?!})|\b[0-9]+\[U\](?!})|\b(?<=[\+\'\~\/])\bU+\b(?!\"))(?!\.[A-z])(?![\"\}}])/gm
+	];
+	const subst = [ `{{clr|L|$1}}` , `{{clr|M|$1}}` , `{{clr|H|$1}}` , `{{clr|S|$1}}` , `{{clr|U|$1}}` ];
+
+	var result=str;
+	for (i = 0; i < regex.length; i++) { result = result.replace(regex[i], subst[i]); }
+	navigator.clipboard.writeText(result);
+	document.getElementById("textFromUser").value = "";
+}
+
+function ChangeButton(buttonChange) {
+	document.getElementById("TextFromUserButton").setAttribute( "onClick", "javascript: "+buttonChange );
+	console.log("Script changed to " + buttonChange);
+}
+</script>
+<h1 style="white-space: pre-wrap; color:white"><span style="font-size:50px">This is to convert Dustloop pages from<br>non-colored inputs to colored inputs.</span><br>
+Copy and paste the text in here, click "Convert Text",
+and the color coded text will automatically be saved
+to your clipboard. Just paste it over the non-colored
+text and save changes.</h1>
+<form class="boxed">
+	<input type="radio" id="BB" name="game" onclick="ChangeButton('ColorTextA()')"><label for="BB">Change to BlazBlue/HNK</label>
+	<input type="radio" id="GB" name="game" onclick="ChangeButton('ColorTextL()')"><label for="GB">Change to GBVS/DBFZ</label>
+	<input type="radio" id="GG" name="game" onclick="ChangeButton('ColorTextP()')"><label for="GG">Change to Guilty Gear</label>
+</form>
+
+<p>Text: </p><textarea id="textFromUser" style="white-space: pre-wrap" rows="20" cols="80"></textarea><br>
+<div class="btn-group"><button id="TextFromUserButton" onclick="ColorTextA()">Convert Text</button></div>
+</body>
+</html>
